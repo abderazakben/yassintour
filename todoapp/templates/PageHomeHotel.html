@@ -1,0 +1,57 @@
+{% extends 'baseHotel.html'  %}
+{% load static %}
+{% block title%}Three{%  endblock %}
+
+{% block content %}
+<h1>Hello,Hotel , Abdu</h1>
+<div class="border p-3">
+    <form method="POST" >
+        {% csrf_token %}
+        <!-- {{form.content}}
+        {{form.date}} -->
+        <label for="validationCustom01" class="form-label"> dectence</label>
+        <input type="text" name="destinace"  class="form-control" id="validationDefault02" value="Otto" required> </br>
+        <label for="validationCustom01" class="form-label"> namber percence </label>
+        <input type="number" name="namber_percen"  class="form-control" id="validationDefault02" value="Otto" required> </br>
+        <label for="validationCustom01" class="form-label">First name</label>
+        <input type="text" name="content"  class="form-control" id="validationDefault02" value="Otto" required> </br> 
+        <!-- <input type="text" name="content"> -->
+        <label for="validationCustom01" class="form-label">La date conferm</label>
+        <input type="datetime-local" name="date"  class="form-control" id="validationDefault02" value="Otto" required></br> 
+        <!-- <input type="datetime-local" id="meeting-time"
+        name="date" value="2018-06-12T19:30"
+        min="2018-06-07T00:00" max="2018-06-14T00:00"> -->
+        <input class="btn btn-success btn-block" type="submit" value="Submit">
+    </form>
+    <hr>
+    {% for todo in todos %}
+    <div class="border p-3 mb-3" >
+        <h5> min fadlik intadir tahdid taman ida kanta mazrob itasil bina pur confermation de prix </h5>
+        <small>{{todo.date}}</small>
+        <div class="row">
+            <div class="col-md-8">
+                <h6>{{todo.destinace}}</h6>
+                {% if todo.comlete == True %}
+                <p><samp class="btn btn-success btn-sm"><i class="far fa-check-circle"></i></samp>{{todo.content}}</p>
+                {% else %}
+                <p>{{todo.content}}</p>
+                {% endif %}
+            </div>
+            <div class="col-md-4">
+                {% if todo.comlete == True %}
+                <a class="btn btn-info btn-sm " href="{% url 'todoapp:update' todo.id  %}">Edit</a>
+                <a class="btn btn-danger btn-sm " href="{% url 'todoapp:delete' todo.id %}">Delet</a>
+                {% else %}
+                   <h6>Intadir tahdiid taman</h6>
+                 {% endif  %}
+            </div>
+
+        </div>
+         
+    </div>
+ 
+   
+{% endfor %}
+</div>
+
+{% endblock %}

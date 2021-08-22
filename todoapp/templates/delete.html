@@ -1,0 +1,19 @@
+{% extends 'baseHotel.html'  %}
+{% load static %}
+{% load bootstrap %}
+{% block title%}Three{%  endblock %}
+
+{% block content %}
+<div class="border p-3">
+    <h4>Delete Th Carate</h4>
+    <div class="alert  alert-danger">
+        <p>Are you sure you want to delete </p>
+    </div>
+    <form method="POST">
+        {% csrf_token %}
+        <a class="btn btn-secondary" href="{% url 'todoapp:homePageHotel' %}" >Cancel </a>
+        <input class="btn btn-danger" type="submit" value="Confirm">
+    </form>
+  
+</div>
+{%  endblock %}

@@ -1,0 +1,226 @@
+{% extends 'base.html'  %}
+{% load static %}
+{% block title%}Three{%  endblock %}
+{% block content %}
+ <!-------- start Bag  ------->
+ <div class="StyBag animate" id="IdFormShop" style="display: none">
+    <iframe id="IdIframePageBag" src="PageBag.html" scrolling="0"></iframe>
+    <div class="dvShowMore" onclick="window.location.href='PageProfile.html'"><p id="idShowMoreProf"> Show More</p></div>
+   </div>
+<!---------- End Bag --------->
+<!--------------------------- CONTENT ---------------->
+
+<div class="divcontent-pg3"  id="content-pg3">
+
+
+<!-- **********Input recherche ************ -->
+<!--
+<div class="flex-pg3 animate" id="grid1">
+  <form  id="form3">
+      <div class="flex-container-pg3">   
+          <input type="text" id="input5" name="text1" placeholder="choose your destination" class="item5" >
+      <span id="spanErreur">*</span>
+          <button type="button" class="btnsearch" id="btnville">
+          <span class="glyphicon glyphicon-search"></span>
+          <i class="bi bi-arrow-right arrow" style="font-size: 25px;color:black"></i>
+        </button>            
+      </div> 
+ </form>
+</div>
+ 
+-->
+<!--
+<form method="GET">
+ 
+  <button class="btn btn-primary" type="submit">search</button>
+
+</form>
+<div>--> 
+
+  <form action="." method="GET" id="form3">
+    <div class="flex-container-pg3">
+      <input type="text" class="item5" placeholder="Recipient's username" name="address" >
+      <button class="btnsearch" type="submit">search</button>       
+    </div>
+  </form>
+  <div class="grid-container grid-pg3 animate" id="grid2">
+    <main class="grid-item main">
+      <div class="items">
+        {% for activites  in activites_menu_lists  %} 
+        <div class="item slide1">
+           {% if activites.A_image  %}
+          <img src="{{activites.A_image.url}}" width="100%">
+          {% else %}
+          <img src="{% static 'img/image1.png'  %}" alt="nature" width="100%" >
+          {% endif %}
+          <div class="dvcircle"><p onclick="addPrix(this.id)"  id="id1" class="text1">+</p></div><div class="dvtext"><p href="#"  onclick="showDetail(this.id)" id="idPlan1"> <span class="ville" id="idville1">{{activites.name_activities}}</span></span></p></div></img></div>        
+          {% endfor %}
+ 
+    </main>
+     </div>
+    
+     <div id="dvslider" class="dvsld animate">
+      <span id="spanclose" onclick="CloseContent()" title="Close">&times;</span>
+
+          <div class="flex-left">
+            <div id="divtop">
+                <p id="NameAct"></p>
+            </div>
+    
+          <div class="divBtm">
+              <div class="slideshow-container">
+
+                  <div class="mySlides fade">
+                    <img src="/img/c1.jpg" style="width:100%;">
+                  </div>
+                  
+                  <div class="mySlides fade">
+                    <img src="/img/c2.jpg" style="width:100%;">
+                  </div>
+                  
+                  <div class="mySlides fade">
+                    <img src="/img/c3.jpg" style="width:100%;">
+                  </div>
+                                    
+                  <div class="mySlides fade">
+                    <img src="/img/c4.jpg" style="width:100%;">
+                  </div>
+                                    
+                  <div class="mySlides fade">
+                    <img src="/img/c5.jpg" style="width:100%;">
+                  </div>
+                                    
+                  <div class="mySlides fade">
+                    <img src="/img/c6.jpg" style="width:100%;">
+                  </div>
+                  
+                  <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                  <a class="next" onclick="plusSlides(1)">&#10095;</a>
+                  
+              </div>
+              <div class="dvBtmSld">
+            <p id="idpicon" onclick="BtnLike(this)"><span id="spanIcon">&#x2764</span><span>9999</span> </p>
+            <p id="idpPrix"><span >200</span>dh</p>
+
+            </div>
+          </div>
+    
+        </div>
+
+        <div class="flex-right">
+  <p id="idTxtSld">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+  <div class="google-map2"><iframe id="ifram2" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d103637.95722047047!2d-5.87378919377006!3d35.73393617008424!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd0b875cf04c132d%3A0x76bfc571bfb4e17a!2sTangier!5e0!3m2!1sen!2sma!4v1620503686281!5m2!1sen!2sma" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe></div>
+  
+  
+      </div>
+        </div>
+         
+      </div>
+    </div> 
+    
+    <div class="container1-pg3">
+        <div class="textstop-pg3"><p><span>More Plants</span></p> </div>
+        {% for activites in activites_menu_lists  %}
+            <div class="row-1-pg3 dv1">
+               <div class="item1-pg3"><p>{{activites.address}}</p></div> 
+               <div class="content-1-pg3">
+                <p class="text1-pg3">{{activites.A_Text}}</p>
+                <button class="link-AddToCard">Add to card</button>
+        
+            </div>
+            </div>
+                    {% endfor %}
+   <!-- Three product  -->
+  
+ 
+   <script src="{% static 'js/main.js' %}" ></script>
+   <script src="{% static  'js/Script_Slider.js' %}" ></script>
+  
+   <script>
+        
+
+    // ************** Function Close Content ************
+    
+        function CloseContent(){
+          document.getElementById('dvslider').style.display='none';
+           document.getElementById('grid1').style.display='block';
+           document.getElementById('grid2').style.display='block';
+       }
+    
+    // ************* Function Show Detail **************
+         function showDetail(id){
+           document.getElementById('dvslider').style.display='block';
+           document.getElementById('grid1').style.display='none';
+            var val1=document.getElementById(id);
+             var y = val1.getElementsByTagName("span");
+             document.getElementById('NameAct').innerHTML=y[0].innerText;
+             document.getElementById('grid2').style.display='none';
+         }
+    
+          //******* input search ********
+            $(document).ready(function(){
+        $("#btnville").click(function(){
+        var txt1=document.getElementById("input5").value;
+        if(txt1!=''){
+          document.getElementById("spanErreur").style.visibility="hidden";
+          var x=document.getElementsByClassName('ville');
+          for(var i=0;i<x.length;i++){
+          x[i].innerHTML=txt1;
+          }
+        }else
+          {
+          document.getElementById("spanErreur").style.visibility="visible";
+    
+        }
+      });
+    });
+            
+                //******** Evente Enter In input *******
+    document.getElementById("input5")
+        .addEventListener("keyup", function(event) {
+        event.preventDefault();
+        if (event.keyCode === 13) {
+            document.getElementById("btnville").click();
+        }
+    });
+    //**********  add Ville ***
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const txtvalue = urlParams.get('text2')
+    var x=document.getElementsByClassName('ville');
+    for(var i=0;i<x.length;i++){
+      x[i].innerHTML=txtvalue;
+    }
+    
+    
+    
+    
+    // ************ function add prix **********
+    function addPrix(id) {
+     x= document.getElementById(id).innerText;
+    //  y= document.getElementById("prix").innerText;
+    //  z=parseInt(y);
+    
+     
+       if(x =="+"){
+      document.getElementById(id).innerHTML="-";
+      // document.getElementById("prix").innerHTML=z+100;
+       }else{
+         document.getElementById(id).innerHTML="+";
+      // document.getElementById("prix").innerHTML=z-100;
+       }
+    }
+            // ************** change text **********
+            document.getElementById("btnville").addEventListener("click", function() {
+      var num=document.getElementsByClassName("text1");
+      for(var i=0;i<num.length;i++){
+        num[i].innerHTML="+";
+      }
+    });
+    
+    
+    
+        </script>
+    
+    
+{% endblock %}

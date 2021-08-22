@@ -1,0 +1,493 @@
+{% extends 'base_2.html'  %}
+{% load static %}
+{% load bootstrap %}
+{% block title %}Home{%  endblock title %}
+{% block content %}
+
+<body>
+    <div class="jarallax" data-speed="0" data-video-src="mp4:{% static  'video/local-video.mp4' %},webm:{% static  'video/local-video.webm' %},ogv: {% static 'video/local-video.ogv' %}">
+        <img class="jarallax-img" src="{% static 'video/local-video.png' %}" alt="">
+        <div class="demo-table">
+            <div class="demo-table-cell" id="demoTable1">
+                      <!-- start header  -->
+                                  
+       <div class="header">
+        <div class="navbar">
+            <div class="div1" id="div1">
+             <a href="#"><img src="{% static 'img/logo.png' %}" alt="logo"></a>
+            </div>
+           
+            <div class="div2" id="div2">
+              <ul class="menu1">
+               
+              <!-- <li class="lien1 w3-hide-small">
+                 <a href="#" id="l1" class="lien" onclick="reset()">Traget</a>
+               </li>
+               <li class="lien2 w3-hide-small">
+                 <a href="#" id="l2" class="lien" onclick="reset()">Trip</a>
+               </li>
+               <li class="lien3 w3-hide-small">
+                 <a href="#" id="l3" class="lien" onclick="reset()">Activities</a>
+               </li> -->
+               <li  class="lien4 w3-hide-small">
+                 {% include "filter.html" %}
+                
+               </li>
+               <li class="lien5"> 
+                <a href="#">Blog</a>
+              </li>
+              {% if user.is_authenticated   %} 
+
+              <li class="lien6">
+                <a id="a1" href="#"  onclick="showModale()">
+                  <span class="s1" id="ltr1">{{user.username}}</span><i id="iconuser" class="fa fa-user"></i>
+                </a>
+              </li>
+              {% else %}
+              <li class="lien6">
+                <a id="a1" href="#"  onclick="showModale()">
+                  <span class="s1" id="ltr1">Login</span><i id="iconuser" class="fa fa-user"></i>
+                </a>
+              </li>
+              {% endif %}
+             
+              <li class="lien7">
+                <a href="#" class="bi bi-bag-fill"></a>
+              </li>             
+            </ul>
+          </div> 
+        </div>
+
+        <div class="navbar">
+          <ul class="menu2" id="navmob">
+            <li class="lien1 ">
+              <a href="javascript:void(0)" id="link1" class="lien" onclick="reset()">Traget</a>
+            </li>
+            <li class="lien2 ">
+              <a href="javascript:void(0)" id="link2" class="lien" onclick="reset()">Trip</a>
+            </li>
+            <li class="lien3 ">
+              <a href="javascript:void(0)" id="link3" class="lien" onclick="reset()">Activities</a>
+            </li>
+            <li  class="lien4 ">
+              <a href="javascript:void(0)" id="link4" class="lien" onclick="reset()">Excursions</a>
+            </li>
+            </ul>
+         </div>
+
+     </div>
+    
+         <!-- End header -->
+       
+            <!---------------------------Start Profiel  ---------------->
+      
+            <div class="allsContent animate" id="idAllsContent">
+              <div>
+                <p><i class="fa fa-user icon"></i><span>profile</span></p>
+                <p><i class="fa fa-cog icon"></i><span>Setting</span></p>
+                <p><i class="fa fa-sign-out icon"></i><span><a  class="lien"  href="{% url 'myapp:logout' %}">Log Out</a></span></p>
+                </div>              
+              </div>
+           
+            <!---------------------------End  Profiel ---------------->
+
+
+            <!--------------------------- Form ---------------->
+            <!--  
+            <form action="GET" id="form1" >
+              <div class="container contentform">
+           <div class="row" >
+            <div class="flex-container" id="contform1">   
+              <input type="text" id="input1" name="start_V" placeholder="D'ou" class="item1" >
+              <input type="text" id="input2" name="price" placeholder="Vers ou" class="item2" >
+              <input type="text" id="input3" name="imge_V" placeholder="Quand" class="item3" >
+              <input type="text" id="input4" name="joined_on" placeholder="Qui" class="item4" >
+          
+              <button type="submit" class="btn btn-warning" id="btn1">
+    <span class="glyphicon glyphicon-search"></span>
+    <i class="bi bi-arrow-right arrow" style="font-size: 25px;color:black"></i>
+  </button>
+  <button type="button" class="btn btn-warning" onclick="fncBtn3()"  id="btn3">
+ <span class="glyphicon glyphicon-search"></span>
+ <i class="bi bi-arrow-right arrow" style="font-size: 25px;color:black"></i>
+</button>
+  <label id="lblerreur">veuillez renseigner tous les champ!</label>
+
+  <button type="button" class="btn btn-warning"  id="btn2" onclick="myshow(this.id)"></button>
+    <span class="glyphicon glyphicon-search"></span>
+    <i class="bi bi-arrow-right arrow" style="font-size: 25px;color:black"></i>
+  </button>
+
+  </div> 
+
+
+  </div>
+-->
+     <!-- Resulta recheche -->
+     <div class="divtable w3-animate-bottom" id="frm" style="display: none;">
+  <div class="flex-container3">
+    <div class="flex-item-left" id="table1">
+    <table style="width:100%">
+      <tr onclick="window.location='pageTribTraget.html';">
+          <td><img src="{% static './img/car.png' %}"></td>
+          <td>opel corsa</td>
+          <td>3<img src="{% static  './img/person.svg' %} "></td>
+          <td>2<img src="{% static  './img/bag.svg' %}"></td>
+          <td>200dh/h</td>
+      </tr>
+      <tr onclick="window.location='pageTribTraget.html';">
+        <td><img src="{% static './img/car.png' %}"></td>
+        <td>Santafe</td>
+        <td>3<img src="{% static './img/person.svg' %}"></td>
+        <td>2<img src="{% static  './img/bag.svg' %}"></td>
+        <td>200dh/h</td>
+      </tr>
+      <tr onclick="window.location='pageTribTraget.html';">
+        <td><img src="{% static  './img/car.png' %}"></td>
+        <td>E220</td>
+        <td>3<img src="{% static './img/person.svg' %}"></td>
+        <td>2<img src="{% static './img/bag.svg' %}"></td>
+        <td>200dh/h</td>
+      </tr>
+      <tr onclick="window.location='pageTribTraget.html';">
+        <td><img src="{% static  './img/car.png' %}"></td>
+        <td>Vito</td>
+        <td>3<img src="{% static './img/person.svg' %}"></td>
+        <td>2<img src="{% static './img/bag.svg' %}"></td>
+        <td>200dh/h</td>
+      </tr>
+      <tr onclick="window.location='pageTribTraget.html';">
+        <td><img src="{% static  './img/car.png' %}"></td>
+        <td>Bmw</td>
+        <td>3<img src="{% static  './img/person.svg' %}" ></td>
+        <td>2<img src="{% static  './img/bag.svg' %}"></td>
+        <td>200dh/h</td>
+      </tr>
+
+  </table> 
+    </div>
+    <div class="flex-item-right" id="table2">
+      <table style="width:100%">
+        <tr onclick="window.location='pageTribTraget.html';">
+          <td><img src="{% static  './img/car.png' %}"></td>
+          <td>opel corsa</td>
+          <td>3<img src="{% static  './img/person.svg' %}"></td>
+          <td>2<img src="{% static './img/bag.svg' %}"></td>
+          <td>200dh/h</td>
+      </tr>
+      <tr onclick="window.location='pageTribTraget.html';">
+        <td><img src="{% static   './img/car.png' %}"></td>
+        <td>Santafe</td>
+        <td>3<img src="{%  static  './img/person.svg' %}"></td>
+        <td>2<img src="{% static './img/bag.svg' %}"></td>
+        <td>200dh/h</td>
+      </tr>
+      <tr onclick="window.location='pageTribTraget.html';">
+        <td><img src="{% static './img/car.png' %}"></td>
+        <td>E220</td>
+        <td>3<img src="{% static './img/person.svg' %}"></td>
+        <td>2<img src="{% static   './img/bag.svg' %}"></td>
+        <td>200dh/h</td>
+      </tr>
+      <tr onclick="window.location='pageTribTraget.html';">
+        <td><img src="{% static './img/car.png' %}"></td>
+        <td>Vito</td>
+        <td>3<img src="{% static  './img/person.svg' %}"></td>
+        <td>2<img src="{% static './img/bag.svg' %}"></td>
+        <td>200dh/h</td>
+      </tr>
+      <tr onclick="window.location='pageTribTraget.html';">
+        <td><img src="{% static './img/car.png' %}"></td>
+        <td>Bmw</td>
+        <td>3<img src="{% static  './img/person.svg' %}" ></td>
+        <td>2<img src="{% static  './img/bag.svg' %}"></td>
+        <td>200dh/h</td>
+      </tr>
+      </table>
+    </div>
+  </div> 
+  </div>
+
+  </div>
+</form>
+   <!---------------------------End Form ---------------->
+
+
+            </div>
+        </div>
+    </div>
+
+    <div class="jarallax">
+        <img class="jarallax-img" src="{% static  './img/image1.jpg' %}" alt="">
+        <div class="demo-table" id="demo2">
+            <div class="demo-table-cell">
+                <h1>EAT&DRI</h1>
+                <a href="#"><span class="styspan">View</span></a>
+            </div>
+        </div>
+    </div>
+ 
+    <div class="jarallax">
+      <img class="jarallax-img" src="{% static './img/image2.jpg' %}" alt="">
+      <div class="demo-table">
+          <div class="demo-table-cell">
+              <h1>rooms</h1>
+              <a href="#"><span class="styspan">View</span></a>
+          </div>
+      </div>
+  </div>
+
+  <div class="jarallax">
+    <img class="jarallax-img" src="{% static './img/image3.jpg' %}" alt="">
+    <div class="demo-table">
+        <div class="demo-table-cell">
+            <h1>about</h1>
+            <a href="#"><span class="styspan">View</span></a>
+        </div>
+    </div>
+</div>
+
+<div class="jarallax">
+  <img class="jarallax-img" src="{% static './img/image4.jpg' %}" alt="">
+  <div class="demo-table">
+      <div class="demo-table-cell">
+          <h1>contact</h1>
+          <a href="#"><span class="styspan">View</span></a>
+      </div>
+  </div>
+</div>
+    
+ <!--           start Login             -->
+ <div id="id01" class="modal">
+  <div class="animate modal-content1">
+    <span  onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+    
+<ul class="nav nav-tabs" style="text-align:center">
+  <li class="active" style="width:50%" id="btnLog"><a data-toggle="tab" href="#tab1">Login</a></li>
+  <li style="width:50%" id="btnReg"><a data-toggle="tab" href="#tab2">Register</a></li>
+</ul>
+<div class="tab-content" >
+  <!-- ******************* Form Login javascript:void(0)  *********************-->
+<div class="tab-pane active" id="tab1">
+  <form method="POST" action="" id="formReg" class="modal-con">
+    {% csrf_token %}
+<div class="containerlogin SpanErreur">
+  <label for="email"><b>{{form.username.label}}</b></label>
+  {{form.username}}
+  <span id="SpanErreur1">*</span>
+  <label for="email"><b>Password</b></label>
+       {{form.password1}}
+  <span id="SpanErreur2">*</span>
+  <button class="loginfm" id="IdLogin">Login</button>
+  <label>
+    <input type="checkbox" checked="checked" name="remember"> Remember me
+  </label>
+</div>
+
+<div class="containerlogin" style="background-color:#f1f1f1">
+  <button id="btncancel" type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+  <span class="psw">Forgot <a href="#" onclick="showFrmReg()" >password?</a></span>
+</div>
+</form>
+{{form.errors}}
+</div>
+
+<!-- ******************* Form Register action="javascript:void(0)"  *********************-->
+<div  class="tab-pane" id="tab2">
+  <div class="containerlogin">
+    <form method="POST" action="" id="formReg" class="modal-con" >
+      {% csrf_token %}
+       <label for="email"><b>{{form.username.label}}</b></label>
+       {{form.username}}
+       <label for="email"><b>{{form.email.label}}</b></label>
+       {{form.email}}
+       <label for="email"><b>Password</b></label>
+       {{form.password1}}
+       <label for="email"><b>Repeat Password</b></label>
+       {{form.password2}}
+          <button class="loginfm" type="submit">Register</button>
+  </div>
+  
+  </form>
+     
+     <h6 style="color: crimson;"> {{form.errors}}</h6>
+  </div>
+  <div  class="tab-pane" id="tab3">
+    <form  id="formReset" class="modal-con" action="" method="post">
+      <div class="containerlogin">
+          <i class="bi bi-arrow-left styBack" id="BtnBack"></i>
+    <p class="titleReset">FORGET PASSWORD</p>
+    <p class="txtEmail">Enter your e-mail adress below to reset your password.</p>
+    <label for="email"><b>Email</b></label>
+    <input type="email" placeholder="Enter Email" name="email" id="email" required>
+    
+      <button class="loginfm" type="submit">Reset </button>
+    </div>
+    </form>
+    </div>
+  
+  
+  </div>
+  </div>
+  </div>
+  <!--
+<div  class="tab-pane" id="tab3">
+  <form  id="formReset" class="modal-con" action="" method="POST">
+    <div class="containerlogin">
+        <i class="bi bi-arrow-left styBack" id="BtnBack"></i>
+  <p class="titleReset">FORGET PASSWORD</p>
+  <p class="txtEmail">Enter your e-mail adress below to reset your password.</p>
+  <label for="email"><b>Email</b></label>
+  <input type="email" placeholder="Enter Email" name="email" id="email" required>
+  
+    <button class="loginfm" type="submit">Reset </button>
+  </div>
+  </form>
+  </div>-->
+
+
+</div>
+</div>
+</div>
+  <!--           End Login                -->
+
+
+  
+    <script src="{% static   'js/main.js' %} " ></script>
+    
+      <script>
+
+        function showModale(){        
+          var valueUser = document.getElementById("ltr1");
+          if(valueUser.innerText=="Login"){
+         document.getElementById("id01").style.display="block";
+          }else{
+            showProfiel();
+          }
+        }
+//****** Function button Login **********
+/*
+ document.getElementById("IdLogin").addEventListener("click", function() {
+  var valInpt1 = document.getElementById("inptTxtUser").value;
+  var valInpt2 = document.getElementById("inptPwUser").value;
+  if (valInpt1!="" && valInpt2!=""){
+    myFctBtnLog();
+  }else{
+    document.getElementById("SpanErreur1").style.visibility = "visible";
+    document.getElementById("SpanErreur2").style.visibility = "visible";
+  }
+});
+*/
+//******** Function Form Profiel Custemer ************
+function myFctBtnLog() {
+  document.getElementById("id01").style.display="none";
+    document.getElementById("iconuser").style.display="inline";
+  var str1 = document.getElementById("inptTxtUser").value;
+  var res1 = str1.slice(0,4);  
+  document.getElementById("ltr1").innerHTML = res1; 
+}
+
+function showProfiel() {
+var idall=document.getElementById("idAllsContent");
+ if(idall.style.display==="none"){
+  idall.style.display = "block";
+  }else{
+  idall.style.display = "none";
+}
+}
+
+
+
+
+
+//*************** Function Form Login ************
+    //  document.getElementById("IdLogin").addEventListener("click",function(){
+    //   document.getElementById("id01").style.display="none";
+    //     document.getElementById("divtable").style.display="flex";
+    //   });
+
+          //********** Button Login **************
+          /*
+      function showFrmReg(){
+        document.getElementById("tab1").style.display="none";
+        document.getElementById("tab2").style.display="none";
+        document.getElementById("tab3").style.display="block";
+      }
+      function FncBtnLogin(){
+        document.getElementById("tab1").style.display="block";
+        document.getElementById("tab2").style.display="none";
+        document.getElementById("tab3").style.display="none";
+      }
+      document.getElementById("btnLog").addEventListener("click",FncBtnLogin);
+      document.getElementById("BtnBack").addEventListener("click",FncBtnLogin);
+
+      document.getElementById("btnReg").addEventListener("click",function(){
+        document.getElementById("tab1").style.display="none";
+        document.getElementById("tab2").style.display="block";
+        document.getElementById("tab3").style.display="none";
+      });
+      */
+//**********End Button Login **************
+         
+          //********* Function url ****************
+          
+function fncBtn3(){
+  var txt1=document.getElementById("input2").value;
+  if(txt1!=''){
+      document.getElementById("lblerreur").style.display="none";
+      window.location="pageThree.html?text2="+document.getElementById("input2").value;
+    }else
+      {
+      document.getElementById("lblerreur").style.display="block";
+    }
+}
+//******** Evente Enter In input2 *******
+document.getElementById("input2")
+    .addEventListener("keyup", function(event) {
+    event.preventDefault();
+    if (event.keyCode === 13 && document.getElementById("input1").style.display=="none") {
+        document.getElementById("btn3").click();
+    }
+});
+
+//******** Evente Enter In inpits *******
+var myInputs = document.getElementsByTagName("input");
+    var p;
+    for (p = 0; p < myInputs.length; p++) {
+      
+      myInputs[p]
+    .addEventListener("keyup", function(event) {
+    event.preventDefault()
+    if (window.matchMedia("(min-width: 601px)").matches) {
+    if (event.keyCode === 13){
+      document.getElementById("btn1").click();
+       
+  
+  }
+      }
+      if (window.matchMedia("(max-width: 600px)").matches) {
+      if (event.keyCode === 13){
+      document.getElementById("btn2").click();
+      }   
+    }
+});
+}
+          
+          
+          //******** Function scroll *******
+              if (window.matchMedia("(max-width: 600px)").matches) {
+    window.onscroll = function() {myFunction()};
+
+  function myFunction() {
+     if (document.body.scrollTop > 400 || document.documentElement.scrollTop > 400) {
+      document.getElementById("contform1").style.display = "none";
+     $(".menu2 > li a").css("color", "#f4f4f4");
+   }
+  }
+    }
+    
+      </script>
+
+
+</body>
+{% endblock %}

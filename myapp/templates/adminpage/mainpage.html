@@ -1,0 +1,26 @@
+{% extends 'base_2.html'  %}
+{% load static %}
+{% block title%}Three{%  endblock %}
+{% block content %}
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#"></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+            <div class="col align-self-start">
+              <h4><i class="fa fa-user"> bonjour . {{user.username}}</i></h4> 
+              </div>
+          <a class="nav-link active" aria-current="page" href="{% url 'myapp:pageadmin' %}">Home</a>
+          <a class="nav-link" href="{% url 'myapp:activitieform' %}">Add Activites</a>
+          <a class="nav-link" href="{% url 'myapp:excursionsform' %}">Add Exursions </a>
+          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+{% endblock %}

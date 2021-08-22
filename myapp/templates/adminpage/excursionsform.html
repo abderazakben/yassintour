@@ -1,0 +1,18 @@
+{% extends 'base.html'  %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block title%}Three{%  endblock %}
+{% block content %}
+<div class="container">
+    <div class="jumbotron">
+        <form method="POST" class="Form-group" enctype="multipart/form-data">
+            {% csrf_token %}
+               {{myform|crispy}}
+            <input type="submit" class="form-control bg-secondary text-light">
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}
