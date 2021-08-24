@@ -39,10 +39,10 @@
             </div>
             <div class="col-md-4">
                 {% if todo.comlete == True %}
-                <a class="btn btn-info btn-sm " href="{% url 'todoapp:update' todo.id  %}">Validate</a>
-                <a class="btn btn-danger btn-sm " href="{% url 'todoapp:delete' todo.id %}">Decline</a>
+                <a class="btn btn-info btn-sm " href="{% url 'todoapp:update' todo.id  %}"> Validate </a>
+                <a class="btn btn-danger btn-sm " href="{% url 'todoapp:delete' todo.id %}"> Decline </a>
                 {% else %}
-                   <h6>Intadir tahdiid taman</h6>
+                   <h6> Price will apear soon </h6>
                  {% endif  %}
             </div>
 
